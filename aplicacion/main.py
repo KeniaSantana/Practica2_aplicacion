@@ -28,7 +28,7 @@ def main(page: ft.Page):
         value="Presencial"
     )
 
-    ixnscripcion = ft.Checkbox(label="¿Requiere inscripción previa?")
+    inscripcion = ft.Checkbox(label="¿Requiere inscripción previa?")
 
     cantidad_horas = ft.Slider(min=1,
                         max=10,
