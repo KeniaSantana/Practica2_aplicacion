@@ -28,7 +28,7 @@ def main(page: ft.Page):
         value="Presencial"
     )
 
-    Inscripcion = ft.Checkbox(label="¿Requiere inscripción previa?")
+    ixnscripcion = ft.Checkbox(label="¿Requiere inscripción previa?")
 
     cantidad_horas = ft.Slider(min=1,
                         max=10,
@@ -47,7 +47,7 @@ def main(page: ft.Page):
 Nombre: {nombre.value}
 Evento: {tipo_evento.value}
 Modalidad: {modalidad.value}
-Inscripcion: {"Sí" if Inscripcion.value else "No"}
+Inscripcion: {"Sí" if inscripcion.value else "No"}
 Cantidad De Horas: {int(cantidad_horas.value)}
 """
         page.update()
@@ -62,7 +62,7 @@ Cantidad De Horas: {int(cantidad_horas.value)}
         nombre,
         tipo_evento,
         modalidad,
-        Inscripcion,
+        inscripcion,
         cantidad_horas,
         boton,
         ft.Divider(),
