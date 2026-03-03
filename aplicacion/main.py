@@ -4,8 +4,8 @@ def main(page: ft.Page):
     page.title = "Aplicación Interactiva"
     page.padding = 20
 
-    titulo = ft.Text("BIENVENIDO",
-                    size=24, 
+    titulo = ft.Text("Bienvenido a nuestro registro",
+                    size=30, 
                     weight=ft.FontWeight.BOLD)
 
     nombre = ft.TextField(label="Nombre")
@@ -15,7 +15,7 @@ def main(page: ft.Page):
         options=[
             ft.dropdown.Option("Conferencia"),
             ft.dropdown.Option("Taller"),
-            ft.dropdown.Option("Seminario")
+            ft.dropdown.Option("Reunion")
         ],
         value="Conferencia"
     )
@@ -28,35 +28,42 @@ def main(page: ft.Page):
         value="Presencial"
     )
 
-    certificado = ft.Checkbox(label="¿Deseas certificado?")
+    Inscripcion = ft.Checkbox(label="¿Requiere inscripción previa?")
 
-    cantidad = ft.Slider(min=1,
+    cantidad_horas = ft.Slider(min=1,
                         max=10,
                         divisions=9, 
                         value=1,
                         label="{value}")
 
-    resumen = ft.Text()
+    resumen = ft.Text(
+        size=15,
+    color=ft.Colors.PINK,
+
+    )
 
     def mostrar_resumen(e):
         resumen.value = f"""
 Nombre: {nombre.value}
 Evento: {tipo_evento.value}
 Modalidad: {modalidad.value}
-Certificado: {"Sí" if certificado.value else "No"}
-Cantidad: {int(cantidad.value)}
+Inscripcion: {"Sí" if Inscripcion.value else "No"}
+Cantidad De Horas: {int(cantidad_horas.value)}
 """
         page.update()
 
-    boton = ft.ElevatedButton("Registrar", on_click=mostrar_resumen)
+    boton = ft.ElevatedButton("Registrar",
+                            on_click=mostrar_resumen,
+                            bgcolor=ft.Colors.BLUE,
+                            color=ft.Colors.WHITE)
 
     page.add(
         titulo,
         nombre,
         tipo_evento,
         modalidad,
-        certificado,
-        cantidad,
+        Inscripcion,
+        cantidad_horas,
         boton,
         ft.Divider(),
         resumen
